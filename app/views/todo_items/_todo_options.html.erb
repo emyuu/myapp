@@ -1,0 +1,23 @@
+<div class="complete">
+  <% if todo_item.completed? %>
+    <div class="uncomplete">
+      <%= link_to uncomplete_todo_list_todo_item_path(@todo_list, todo_item.id),
+          class: "btn btn-default btn-xs", title: "Not completed", method: "patch" do %>
+        <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="complete">
+      <%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id),
+          class: "btn btn-default btn-xs", title: "Completed", method: :patch do %>
+        <span class="glyphicon glyphicon-ok"></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="trash">
+  <%= link_to  todo_list_todo_item_path(@todo_list, todo_item.id), class: "btn btn-default btn-xs",
+      title: "Delete", method: :delete, data: {confirm: "Are you sure?"} do %>
+    <span class="glyphicon glyphicon-trash"></span>
+  <% end %>
+</div>
